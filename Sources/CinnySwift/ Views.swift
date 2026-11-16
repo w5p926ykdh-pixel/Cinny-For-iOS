@@ -94,11 +94,8 @@ struct MainView: View {
                 if !store.invites.isEmpty {
                     Section("Invites") {
                         ForEach(store.invites) { r in
-                            HStack {
-                                Text(r.displayName(me: store.me)).lineLimit(1)
-                                Spacer()
-                                Button("Join") { Task { await store.join(r.id) } }.buttonStyle(.bordered)
-                                Button("Decline") { Task { await store.leave(r) } }.buttonStyle(.borderless)
+                        ForEach(store.invites) { InviteRow(room: $0) }
+
                             }
                         }
                     }
