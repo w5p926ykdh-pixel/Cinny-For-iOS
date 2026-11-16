@@ -20,7 +20,11 @@ struct CinnySwiftApp: App {
 // MARK: - Login
 struct LoginView: View {
     @Environment(Store.self) private var store
-    @State private var server = "matrix.org", user = "", password = "", busy = false
+    @State private var server = "matrix.org"
+    @State private var user = ""
+    @State private var password = ""
+    @State private var busy = false
+
     var body: some View {
         VStack(spacing: 14) {
             Text("Cinny").font(.largeTitle.bold())
