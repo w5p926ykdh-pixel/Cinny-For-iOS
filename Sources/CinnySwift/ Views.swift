@@ -83,7 +83,9 @@ struct Avatar: View {
 // MARK: - Main (Sidebar + room list + timeline)
 struct MainView: View {
     @Environment(Store.self) private var store
-    @State private var joinTarget = "", showJoin = false
+    @State private var joinTarget = ""
+    @State private var showJoin = false
+
 
     var body: some View {
         @Bindable var store = store
