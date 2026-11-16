@@ -93,11 +93,7 @@ struct MainView: View {
             List(selection: Binding(get: { store.selectedRoom }, set: { if let id = $0 { store.select(id) } })) {
                 if !store.invites.isEmpty {
                     Section("Invites") {
-                        ForEach(store.invites) { r in
                         ForEach(store.invites) { InviteRow(room: $0) }
-
-                            }
-                        }
                     }
                 }
                 Section {
