@@ -8,7 +8,9 @@ final class RoomState: Identifiable {
     var state: [String: MatrixEvent] = [:]          // "type|stateKey"
     var timeline: [MatrixEvent] = []
     var prevBatch: String?
-    var notificationCount = 0, highlightCount = 0
+    var notificationCount = 0
+    var highlightCount = 0
+
     var isInvite = false
     var redacted: Set<String> = []
     var edits: [String: MatrixEvent] = [:]           // target event -> latest edit
