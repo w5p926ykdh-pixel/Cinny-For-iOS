@@ -248,6 +248,8 @@ struct MessageRow: View {
             if let mxc = event.content["url"]?.string {
                 AuthImage(mxc: mxc, size: 300).frame(width: 300, height: 200).clipShape(RoundedRectangle(cornerRadius: 8))
             }
+
+            
         case "m.file", "m.video", "m.audio":
             Label(body, systemImage: "paperclip")
         default:
@@ -268,6 +270,18 @@ struct MessageRow: View {
                     }
                 }
             }
+        }
+    }
+}
+struct InviteRow: View {
+    @Environment(Store.self) private var store
+    let room: RoomState
+    var body: some View {
+        HStack {
+            Text(room.displayName(me: store.me)).lineLimit(1)
+            Spacer()
+            Button("Join") { Task { await store.join(room.id) } }.buttonStyle(.bordered)
+            Button("Decline") { Task { await store.leave(room) } }.buttonStyle(.borderless)
         }
     }
 }
